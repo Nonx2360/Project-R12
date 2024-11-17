@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Payment Status</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Update Payment Status for {{ student['ชื่อ'] }} {{ student['นามสกุล'] }}</h1>
+    <form method="POST">
+        <label for="status">Payment Status:</label>
+        <select name="status" id="status">
+            <option value="Paid" {% if student['สถานะ'] == 'Paid' %}selected{% endif %}>Paid</option>
+            <option value="Unpaid" {% if student['สถานะ'] == 'Unpaid' %}selected{% endif %}>Unpaid</option>
+        </select>
+        <button type="submit">Update</button>
+    </form>
+    <a href="{{ url_for('admin') }}">Back to Admin</a>
+</body>
+</html>

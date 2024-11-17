@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Admin - Update Payment Status</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>เลขที่</th>
+                <th>รหัสนักเรียน</th>
+                <th>ชื่อ</th>
+                <th>นามสกุล</th>
+                <th>สถานะ</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in data %}
+            <tr>
+                <td>{{ student['เลขที่'] }}</td>
+                <td>{{ student['รหัสนักเรียน'] }}</td>
+                <td>{{ student['ชื่อ'] }}</td>
+                <td>{{ student['นามสกุล'] }}</td>
+                <td>{{ student['สถานะ'] }}</td>
+                <td><a href="{{ url_for('update_payment', index=loop.index0) }}">Update</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('dashboard') }}">Go to Dashboard</a>
+</body>
+
+</html>
